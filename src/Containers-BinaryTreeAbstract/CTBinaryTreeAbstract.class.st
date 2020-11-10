@@ -43,11 +43,6 @@ CTBinaryTreeAbstract >> mergeBinaryTree: aTree [
 	self subclassResponsibility
 ]
 
-{ #category : #removing }
-CTBinaryTreeAbstract >> pop [
-	self subclassResponsibility
-]
-
 { #category : #evaluating }
 CTBinaryTreeAbstract >> root [
 	self subclassResponsibility

@@ -14,11 +14,6 @@ CTBinaryTreeEmpty >> mergeBinaryTree: aTree [
 	^ aTree
 ]
 
-{ #category : #removing }
-CTBinaryTreeEmpty >> pop [
-	CollectionIsEmpty signal
-]
-
 { #category : #accessing }
 CTBinaryTreeEmpty >> root [
 	CollectionIsEmpty signal
