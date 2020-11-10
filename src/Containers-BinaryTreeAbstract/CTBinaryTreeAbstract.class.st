@@ -4,6 +4,25 @@ Class {
 	#category : #'Containers-BinaryTreeAbstract'
 }
 
+{ #category : #creating }
+CTBinaryTreeAbstract class >> empty [
+	^ self left: nil value: nil right: nil
+]
+
+{ #category : #creating }
+CTBinaryTreeAbstract class >> leaf: anObject [
+	^ self left: nil value: anObject right: nil
+]
+
+{ #category : #creating }
+CTBinaryTreeAbstract class >> left: lTree value: anObject right: rTree [
+	^ self new
+		  previousLink: lTree;
+		  value: anObject;
+		  nextLink: rTree;
+		  yourself
+]
+
 { #category : #comparing }
 CTBinaryTreeAbstract >> = anotherObject [
 	^ self == anotherObject
@@ -12,4 +31,24 @@ CTBinaryTreeAbstract >> = anotherObject [
 { #category : #comparing }
 CTBinaryTreeAbstract >> hash [
 	^ self identityHash
+]
+
+{ #category : #testing }
+CTBinaryTreeAbstract >> isEmpty [
+	self subclassResponsibility
+]
+
+{ #category : #actions }
+CTBinaryTreeAbstract >> mergeBinaryTree: aTree [
+	self subclassResponsibility
+]
+
+{ #category : #removing }
+CTBinaryTreeAbstract >> pop [
+	self subclassResponsibility
+]
+
+{ #category : #evaluating }
+CTBinaryTreeAbstract >> root [
+	self subclassResponsibility
 ]

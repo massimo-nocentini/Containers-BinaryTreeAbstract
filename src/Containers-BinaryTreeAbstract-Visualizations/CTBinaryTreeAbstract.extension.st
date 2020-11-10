@@ -17,6 +17,24 @@ CTBinaryTreeAbstract >> asSlotsGroupKnownReferences: aSet recursiveReferences: r
 ]
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
+CTBinaryTreeAbstract >> asSlotsGroupRecursiveKnownReferences: aSet [
+	"This message should be overridden by any subclass that has a recursive structure
+	 that would be visualized; in particular, the layout block has to be plugged in."
+
+	^ self
+		  asSlotsGroupRecursiveKnownReferences: aSet
+		  layoutBlock: [ :shapes | 
+			  | eb |
+			  eb := (RSEdgeBuilder new: RSArrowedLine new)
+				        color: Color gray;
+				        shapes: shapes;
+				        yourself.
+			  RSTreeLayout
+				  on: shapes
+				  edges: (eb connectTo: #previousLink) , (eb connectTo: #nextLink) ]
+]
+
+{ #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
 CTBinaryTreeAbstract >> defaultControlPointsControllerOverShapes: shapes [
 	^ RSBlockCPController new
 		  block: [ :edge | 
@@ -29,6 +47,14 @@ CTBinaryTreeAbstract >> defaultControlPointsControllerOverShapes: shapes [
 ]
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
+CTBinaryTreeAbstract >> instVarsNamesOrderedCollection [
+	^ { 
+		  #previousLink asReflexiveAssociation.
+		  #value asReflexiveAssociation.
+		  #nextLink asReflexiveAssociation }
+]
+
+{ #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
 CTBinaryTreeAbstract >> loopingBackwardControlPointsControllerOverShapes: shapes [
 	^ self defaultControlPointsControllerOverShapes: shapes
 ]
@@ -36,18 +62,4 @@ CTBinaryTreeAbstract >> loopingBackwardControlPointsControllerOverShapes: shapes
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
 CTBinaryTreeAbstract >> loopingForwardControlPointsControllerOverShapes: shapes [
 	^ self defaultControlPointsControllerOverShapes: shapes
-]
-
-{ #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
-CTBinaryTreeAbstract >> recursiveReferences [
-	| stack |
-	stack := CTLinkedStoragePool stack new.
-	stack push: self.
-	^ Array streamContents: [ :s | 
-		  [ stack isEmpty ] whileFalse: [ 
-			  | node |
-			  node := stack pop.
-			  s nextPut: node.
-			  node previousLink ifNotNil: [ :l | stack push: l ].
-			  node nextLink ifNotNil: [ :l | stack push: l ] ] ]
 ]
