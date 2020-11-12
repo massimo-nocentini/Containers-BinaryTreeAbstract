@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #testing }
+CTBinaryTreeEmpty >> ifEmpty: eBlock ifNotEmpty: neBlock [
+	^ eBlock cull: self
+]
+
+{ #category : #testing }
 CTBinaryTreeEmpty >> isEmpty [
 	^ true
 ]

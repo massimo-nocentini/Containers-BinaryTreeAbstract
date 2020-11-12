@@ -34,6 +34,11 @@ CTBinaryTreeAbstract >> hash [
 ]
 
 { #category : #testing }
+CTBinaryTreeAbstract >> ifEmpty: eBlock ifNotEmpty: neBlock [
+	self subclassResponsibility
+]
+
+{ #category : #testing }
 CTBinaryTreeAbstract >> isEmpty [
 	self subclassResponsibility
 ]
