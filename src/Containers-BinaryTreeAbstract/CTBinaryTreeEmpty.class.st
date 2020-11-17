@@ -14,6 +14,11 @@ CTBinaryTreeEmpty >> mergeBinaryTreeElement: aBTElement inBinaryTree: aBinaryTre
 	^ aBTElement
 ]
 
+{ #category : #'as yet unclassified' }
+CTBinaryTreeEmpty >> popInBinaryTree: aBinaryTree [
+	CollectionIsEmpty signal
+]
+
 { #category : #accessing }
 CTBinaryTreeEmpty >> root [
 	CollectionIsEmpty signal

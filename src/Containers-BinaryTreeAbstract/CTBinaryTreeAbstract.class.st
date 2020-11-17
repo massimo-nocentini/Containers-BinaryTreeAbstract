@@ -41,7 +41,7 @@ CTBinaryTreeAbstract >> binaryTreeElementEmpty [
 	self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #creating }
 CTBinaryTreeAbstract >> binaryTreeElementLeaf: anObject [
 	^ self
 		  leftBinaryTreeElement: self binaryTreeElementEmpty
@@ -50,8 +50,42 @@ CTBinaryTreeAbstract >> binaryTreeElementLeaf: anObject [
 ]
 
 { #category : #creating }
-CTBinaryTreeAbstract >> leftBinaryTreeElement: leftBinaryTreeElement value: anObject rightBinaryTreeElement: rightBinaryTreeElement [
+CTBinaryTreeAbstract >> binaryTreeElementNode [
 	self subclassResponsibility
+]
+
+{ #category : #testing }
+CTBinaryTreeAbstract >> is: anObject equalTo: anotherObject [
+	^ anObject = anotherObject
+]
+
+{ #category : #testing }
+CTBinaryTreeAbstract >> is: anObject lessThan: anotherObject [
+	^ anObject < anotherObject
+]
+
+{ #category : #creating }
+CTBinaryTreeAbstract >> leftBinaryTreeElement: l value: v rightBinaryTreeElement: r [
+	^ self binaryTreeElementNode
+		  previousLink: l;
+		  value: v;
+		  nextLink: r;
+		  yourself
+]
+
+{ #category : #accessing }
+CTBinaryTreeAbstract >> pop [
+	^ self root ignoreBlock: [ 
+		  representation := representation popInBinaryTree: self ]
+]
+
+{ #category : #adding }
+CTBinaryTreeAbstract >> push: anObject [
+	| leaf |
+	leaf := self binaryTreeElementLeaf: anObject.
+	representation := leaf
+		                  mergeBinaryTreeElement: representation
+		                  inBinaryTree: self
 ]
 
 { #category : #accessing }

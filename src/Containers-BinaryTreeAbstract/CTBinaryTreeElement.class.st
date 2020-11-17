@@ -48,6 +48,11 @@ CTBinaryTreeElement >> mergeBinaryTreeElement: aBTElement inBinaryTree: aBinaryT
 	self subclassResponsibility
 ]
 
+{ #category : #'as yet unclassified' }
+CTBinaryTreeElement >> popInBinaryTree: aBinaryTree [
+	self subclassResponsibility
+]
+
 { #category : #evaluating }
 CTBinaryTreeElement >> root [
 	self subclassResponsibility
