@@ -1,6 +1,6 @@
 Class {
 	#name : #CTBinaryTreeEmpty,
-	#superclass : #CTBinaryTreeAbstract,
+	#superclass : #CTBinaryTreeElement,
 	#category : #'Containers-BinaryTreeAbstract'
 }
 
@@ -9,14 +9,9 @@ CTBinaryTreeEmpty >> ifEmpty: eBlock ifNotEmpty: neBlock [
 	^ eBlock cull: self
 ]
 
-{ #category : #testing }
-CTBinaryTreeEmpty >> isEmpty [
-	^ true
-]
-
 { #category : #actions }
-CTBinaryTreeEmpty >> mergeBinaryTree: aTree [
-	^ aTree
+CTBinaryTreeEmpty >> mergeBinaryTreeElement: aBTElement inBinaryTree: aBinaryTree [
+	^ aBTElement
 ]
 
 { #category : #accessing }

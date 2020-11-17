@@ -1,7 +1,7 @@
-Extension { #name : #CTBinaryTreeAbstract }
+Extension { #name : #CTBinaryTreeElement }
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
-CTBinaryTreeAbstract >> asSlotsGroupKnownReferences: aSet recursiveReferences: refs [
+CTBinaryTreeElement >> asSlotsGroupKnownReferences: aSet recursiveReferences: refs [
 	^ self
 		  asSlotsGroupKnownReferences: aSet
 		  recursiveReferences: refs
@@ -17,7 +17,7 @@ CTBinaryTreeAbstract >> asSlotsGroupKnownReferences: aSet recursiveReferences: r
 ]
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
-CTBinaryTreeAbstract >> asSlotsGroupRecursiveKnownReferences: aSet [
+CTBinaryTreeElement >> asSlotsGroupRecursiveKnownReferences: aSet [
 	"This message should be overridden by any subclass that has a recursive structure
 	 that would be visualized; in particular, the layout block has to be plugged in."
 
@@ -35,7 +35,7 @@ CTBinaryTreeAbstract >> asSlotsGroupRecursiveKnownReferences: aSet [
 ]
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
-CTBinaryTreeAbstract >> defaultControlPointsControllerOverShapes: shapes [
+CTBinaryTreeElement >> defaultControlPointsControllerOverShapes: shapes [
 	^ RSBlockCPController new
 		  block: [ :edge | 
 			  | f t ap |
@@ -47,7 +47,7 @@ CTBinaryTreeAbstract >> defaultControlPointsControllerOverShapes: shapes [
 ]
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
-CTBinaryTreeAbstract >> instVarsNamesOrderedCollection [
+CTBinaryTreeElement >> instVarsNamesOrderedCollection [
 	^ { 
 		  #previousLink asReflexiveAssociation.
 		  #value asReflexiveAssociation.
@@ -55,11 +55,11 @@ CTBinaryTreeAbstract >> instVarsNamesOrderedCollection [
 ]
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
-CTBinaryTreeAbstract >> loopingBackwardControlPointsControllerOverShapes: shapes [
+CTBinaryTreeElement >> loopingBackwardControlPointsControllerOverShapes: shapes [
 	^ self defaultControlPointsControllerOverShapes: shapes
 ]
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
-CTBinaryTreeAbstract >> loopingForwardControlPointsControllerOverShapes: shapes [
+CTBinaryTreeElement >> loopingForwardControlPointsControllerOverShapes: shapes [
 	^ self defaultControlPointsControllerOverShapes: shapes
 ]

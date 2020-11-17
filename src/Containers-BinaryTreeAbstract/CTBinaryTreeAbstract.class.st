@@ -1,54 +1,70 @@
 Class {
 	#name : #CTBinaryTreeAbstract,
-	#superclass : #CTDoubleValueLink,
+	#superclass : #Object,
+	#instVars : [
+		'representation'
+	],
 	#category : #'Containers-BinaryTreeAbstract'
 }
 
-{ #category : #creating }
+{ #category : #requirements }
 CTBinaryTreeAbstract class >> empty [
-	^ self left: nil value: nil right: nil
+	^ self basicNew in: [ :aTree | 
+		  aTree
+			  representation: aTree binaryTreeElementEmpty;
+			  initialize;
+			  yourself ]
 ]
 
-{ #category : #creating }
-CTBinaryTreeAbstract class >> leaf: anObject [
-	^ self left: nil value: anObject right: nil
-]
-
-{ #category : #creating }
-CTBinaryTreeAbstract class >> left: lTree value: anObject right: rTree [
-	^ self new
-		  previousLink: lTree;
-		  value: anObject;
-		  nextLink: rTree;
+{ #category : #'instance creation' }
+CTBinaryTreeAbstract class >> withArrayedCollection: aCollection [
+	| tree |
+	tree := self new.
+	^ tree
+		  representation: (aCollection
+				   bisect: [ :l :r | 
+					   l mergeBinaryTreeElement: r inBinaryTree: tree ]
+				   baseBlock: [ :each | tree binaryTreeElementLeaf: each ]);
 		  yourself
 ]
 
-{ #category : #comparing }
-CTBinaryTreeAbstract >> = anotherObject [
-	^ self == anotherObject
+{ #category : #'instance creation' }
+CTBinaryTreeAbstract class >> withCollection: aCollection [
+	^ aCollection inject: self empty into: [ :aBinaryTree :each | 
+		  aBinaryTree
+			  push: each;
+			  yourself ]
 ]
 
-{ #category : #comparing }
-CTBinaryTreeAbstract >> hash [
-	^ self identityHash
-]
-
-{ #category : #testing }
-CTBinaryTreeAbstract >> ifEmpty: eBlock ifNotEmpty: neBlock [
+{ #category : #creating }
+CTBinaryTreeAbstract >> binaryTreeElementEmpty [
 	self subclassResponsibility
 ]
 
-{ #category : #testing }
-CTBinaryTreeAbstract >> isEmpty [
+{ #category : #'as yet unclassified' }
+CTBinaryTreeAbstract >> binaryTreeElementLeaf: anObject [
+	^ self
+		  leftBinaryTreeElement: self binaryTreeElementEmpty
+		  value: anObject
+		  rightBinaryTreeElement: self binaryTreeElementEmpty
+]
+
+{ #category : #creating }
+CTBinaryTreeAbstract >> leftBinaryTreeElement: leftBinaryTreeElement value: anObject rightBinaryTreeElement: rightBinaryTreeElement [
 	self subclassResponsibility
 ]
 
-{ #category : #actions }
-CTBinaryTreeAbstract >> mergeBinaryTree: aTree [
-	self subclassResponsibility
+{ #category : #accessing }
+CTBinaryTreeAbstract >> representation [
+	^ representation
 ]
 
-{ #category : #evaluating }
+{ #category : #accessing }
+CTBinaryTreeAbstract >> representation: anObject [
+	^ representation := anObject
+]
+
+{ #category : #accessing }
 CTBinaryTreeAbstract >> root [
-	self subclassResponsibility
+	^ representation root
 ]
