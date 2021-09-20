@@ -38,7 +38,8 @@ CTBinaryTreeAbstract class >> withCollection: aCollection [
 
 { #category : #creating }
 CTBinaryTreeAbstract >> binaryTreeElementEmpty [
-	self subclassResponsibility
+
+	^ CTBinaryTreeEmpty new
 ]
 
 { #category : #creating }
@@ -51,7 +52,8 @@ CTBinaryTreeAbstract >> binaryTreeElementLeaf: anObject [
 
 { #category : #creating }
 CTBinaryTreeAbstract >> binaryTreeElementNode [
-	self subclassResponsibility
+
+	^ CTBinaryTreeNode new
 ]
 
 { #category : #testing }
@@ -81,8 +83,10 @@ CTBinaryTreeAbstract >> pop [
 
 { #category : #adding }
 CTBinaryTreeAbstract >> push: anObject [
+
 	| leaf |
 	leaf := self binaryTreeElementLeaf: anObject.
+
 	representation := leaf
 		                  mergeBinaryTreeElement: representation
 		                  inBinaryTree: self
