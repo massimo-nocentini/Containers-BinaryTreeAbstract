@@ -77,7 +77,8 @@ CTBinaryTreeAbstract >> leftBinaryTreeElement: l value: v rightBinaryTreeElement
 
 { #category : #accessing }
 CTBinaryTreeAbstract >> pop [
-	^ self root ignoreBlock: [ 
+
+	^ self root yourself: [ 
 		  representation := representation popInBinaryTree: self ]
 ]
 
