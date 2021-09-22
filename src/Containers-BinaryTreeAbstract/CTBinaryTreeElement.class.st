@@ -9,6 +9,12 @@ CTBinaryTreeElement >> = anotherObject [
 	^ self == anotherObject
 ]
 
+{ #category : #'as yet unclassified' }
+CTBinaryTreeElement >> asShape [
+
+	self subclassResponsibility
+]
+
 { #category : #comparing }
 CTBinaryTreeElement >> hash [
 	^ self identityHash

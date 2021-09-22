@@ -1,12 +1,23 @@
 Extension { #name : #CTBinaryTreeNode }
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
-CTBinaryTreeNode >> edges: edges parent: aNode [
-	| leftEdges rightEdges |
-	rightEdges := nextLink edges: edges parent: self.
-	leftEdges := previousLink edges: rightEdges parent: self.
-	^ ValueLink new
-		  value: aNode -> self;
-		  nextLink: leftEdges;
+CTBinaryTreeNode >> asShape [
+
+	^ RSLabel new
+		  model: self value;
+		  fontName: 'Source Code Pro';
 		  yourself
+]
+
+{ #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
+CTBinaryTreeNode >> shapes: shapes edges: associations [
+
+	super shapes: shapes edges: associations.
+
+	associations
+		add: self -> previousLink;
+		add: self -> nextLink.
+		
+	previousLink shapes: shapes edges: associations.
+	nextLink shapes: shapes edges: associations
 ]

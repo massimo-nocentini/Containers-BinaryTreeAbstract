@@ -30,10 +30,10 @@ CTBinaryTreeAbstract class >> withArrayedCollection: aCollection [
 
 { #category : #'instance creation' }
 CTBinaryTreeAbstract class >> withCollection: aCollection [
-	^ aCollection inject: self empty into: [ :aBinaryTree :each | 
-		  aBinaryTree
-			  push: each;
-			  yourself ]
+
+	^ aCollection
+		  inject: self empty
+		  into: [ :aBinaryTree :each | aBinaryTree push: each ]
 ]
 
 { #category : #creating }
