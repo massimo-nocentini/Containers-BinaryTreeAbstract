@@ -4,5 +4,7 @@ Extension { #name : #CTSlotDescriptorsVisitor }
 CTSlotDescriptorsVisitor >> visitCTBinaryTreeAbstract: aBinaryTree [
 
 	^ (self visitObject: aBinaryTree)
-	  , { #asShapeBinaryTree asSlotDescriptor quote }
+	  , { (#asShapeBinaryTree asSlotDescriptor
+			   inline: true;
+			   quote) }
 ]

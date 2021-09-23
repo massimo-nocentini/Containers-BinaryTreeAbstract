@@ -6,13 +6,24 @@ Class {
 	#superclass : #TestCase,
 	#traits : 'TIceImagesExporting',
 	#classTraits : 'TIceImagesExporting classTrait',
+	#instVars : [
+		'treeClass'
+	],
 	#category : #'Containers-BinaryTreeAbstract-Tests'
 }
+
+{ #category : #running }
+CTBinaryTreeAbstractTest >> setUp [
+
+	super setUp.
+
+	treeClass := CTBinaryTreeAbstract
+]
 
 { #category : #tests }
 CTBinaryTreeAbstractTest >> testCreation [
 
-	^ self exportSlotsGraphOf: CTBinaryTreeAbstract empty
+	^ self exportSlotsGraphOf: treeClass empty
 ]
 
 { #category : #tests }
@@ -20,7 +31,7 @@ CTBinaryTreeAbstractTest >> testPushOrderedInterval [
 
 	| tree |
 	tree := (1 to: 20)
-		        inject: CTBinaryTreeAbstract empty
+		        inject: treeClass empty
 		        into: [ :aBinaryTree :each | aBinaryTree push: each ].
 
 	^ self exportSlotsGraphOf: tree

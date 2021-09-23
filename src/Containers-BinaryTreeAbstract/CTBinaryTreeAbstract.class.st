@@ -94,11 +94,6 @@ CTBinaryTreeAbstract >> push: anObject [
 ]
 
 { #category : #accessing }
-CTBinaryTreeAbstract >> representation [
-	^ representation
-]
-
-{ #category : #accessing }
 CTBinaryTreeAbstract >> representation: anObject [
 	^ representation := anObject
 ]
