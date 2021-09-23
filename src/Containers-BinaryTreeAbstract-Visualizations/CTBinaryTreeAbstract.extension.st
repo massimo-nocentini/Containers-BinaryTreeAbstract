@@ -16,7 +16,11 @@ CTBinaryTreeAbstract >> asShapeBinaryTree [
 	representation shapes: shapes edges: associations.
 
 	edgeBuilder := RSLineBuilder horizontalBezier
-		               withHorizontalAttachPoint.
+		               attachPoint: (RSHorizontalAttachPoint new
+				                startOffset: Float goldenRatio;
+				                endOffset: Float goldenRatio negated;
+				                yourself);
+		               yourself.
 
 	lines := associations collect: [ :each | 
 		         edgeBuilder

@@ -6,33 +6,58 @@ Class {
 	#superclass : #TestCase,
 	#traits : 'TIceImagesExporting',
 	#classTraits : 'TIceImagesExporting classTrait',
-	#instVars : [
-		'treeClass'
-	],
 	#category : #'Containers-BinaryTreeAbstract-Tests'
 }
-
-{ #category : #running }
-CTBinaryTreeAbstractTest >> setUp [
-
-	super setUp.
-
-	treeClass := CTBinaryTreeAbstract
-]
 
 { #category : #tests }
 CTBinaryTreeAbstractTest >> testCreation [
 
-	^ self exportSlotsGraphOf: treeClass empty
+	^ self exportSlotsGraphOf: (self tree: {  })
+]
+
+{ #category : #tests }
+CTBinaryTreeAbstractTest >> testPushOrderedCollection [
+
+	^ self exportSlotsGraphOf:
+		  (self tree: (1 to: 20) asOrderedCollection)
 ]
 
 { #category : #tests }
 CTBinaryTreeAbstractTest >> testPushOrderedInterval [
 
-	| tree |
-	tree := (1 to: 20)
-		        inject: treeClass empty
-		        into: [ :aBinaryTree :each | aBinaryTree push: each ].
+	^ self exportSlotsGraphOf: (self tree: (1 to: 20) asArray)
+]
 
-	^ self exportSlotsGraphOf: tree
+{ #category : #tests }
+CTBinaryTreeAbstractTest >> testPushShuffledCollection [
+
+	| shuffled |
+	shuffled := (1 to: 20) asOrderedCollection shuffleBy:
+		            (Random seed: 13).
+
+	self
+		assert: shuffled
+		equals: #( 8 16 20 3 6 5 4 19 7 12 2 10 11 9 13 18 17 15 14 1 )
+				asOrderedCollection.
+
+	^ self exportSlotsGraphOf: (self tree: shuffled)
+]
+
+{ #category : #tests }
+CTBinaryTreeAbstractTest >> testPushShuffledInterval [
+
+	| shuffled |
+	shuffled := (1 to: 20) asArray shuffleBy: (Random seed: 13).
+
+	self
+		assert: shuffled
+		equals: #( 8 16 20 3 6 5 4 19 7 12 2 10 11 9 13 18 17 15 14 1 ).
+
+	^ self exportSlotsGraphOf: (self tree: shuffled)
+]
+
+{ #category : #tests }
+CTBinaryTreeAbstractTest >> tree: aCollection [
+
+	^ aCollection asBinaryTree
 ]

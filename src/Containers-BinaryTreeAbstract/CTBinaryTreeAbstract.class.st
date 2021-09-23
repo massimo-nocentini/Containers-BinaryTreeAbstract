@@ -9,23 +9,20 @@ Class {
 
 { #category : #requirements }
 CTBinaryTreeAbstract class >> empty [
-	^ self basicNew in: [ :aTree | 
-		  aTree
-			  representation: aTree binaryTreeElementEmpty;
-			  initialize;
-			  yourself ]
+
+	^ self new yourself: [ :aTree | 
+		  aTree representation: aTree binaryTreeElementEmpty ]
 ]
 
 { #category : #'instance creation' }
 CTBinaryTreeAbstract class >> withArrayedCollection: aCollection [
-	| tree |
-	tree := self new.
-	^ tree
-		  representation: (aCollection
-				   bisect: [ :l :r | 
+
+	^ aCollection ifEmpty: [ self empty ] ifNotEmpty: [ 
+		  self new yourself: [ :tree | 
+			  tree representation: (aCollection
+					   bisect: [ :l :r | 
 					   l mergeBinaryTreeElement: r inBinaryTree: tree ]
-				   baseBlock: [ :each | tree binaryTreeElementLeaf: each ]);
-		  yourself
+					   baseBlock: [ :each | tree binaryTreeElementLeaf: each ]) ] ]
 ]
 
 { #category : #'instance creation' }
