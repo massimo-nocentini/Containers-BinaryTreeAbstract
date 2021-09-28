@@ -60,6 +60,12 @@ CTBinaryTreeAbstract >> depth [
 ]
 
 { #category : #testing }
+CTBinaryTreeAbstract >> ifEmpty: eBlock ifNotEmpty: neBlock [
+
+	^ representation ifEmpty: eBlock ifNotEmpty: neBlock
+]
+
+{ #category : #testing }
 CTBinaryTreeAbstract >> is: anObject equalTo: anotherObject [
 	^ anObject = anotherObject
 ]

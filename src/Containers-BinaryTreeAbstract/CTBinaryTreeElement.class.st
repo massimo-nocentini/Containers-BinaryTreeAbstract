@@ -10,12 +10,6 @@ CTBinaryTreeElement >> = anotherObject [
 ]
 
 { #category : #'as yet unclassified' }
-CTBinaryTreeElement >> asShape [
-
-	self subclassResponsibility
-]
-
-{ #category : #'as yet unclassified' }
 CTBinaryTreeElement >> depth [
 
 	self subclassResponsibility
@@ -26,8 +20,9 @@ CTBinaryTreeElement >> hash [
 	^ self identityHash
 ]
 
-{ #category : #testing }
+{ #category : #'as yet unclassified' }
 CTBinaryTreeElement >> ifEmpty: eBlock ifNotEmpty: neBlock [
+
 	self subclassResponsibility
 ]
 
