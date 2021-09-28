@@ -12,7 +12,7 @@ Class {
 { #category : #tests }
 CTBinaryTreeAbstractTest >> testCreation [
 
-	^ self exportSlotsGraphOf: (self tree: {  })
+	^ self exportSlotsGraphOf: CTBinaryTreeAbstract empty
 ]
 
 { #category : #tests }

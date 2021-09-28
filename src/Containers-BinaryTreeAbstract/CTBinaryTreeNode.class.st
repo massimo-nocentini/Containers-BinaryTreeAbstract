@@ -12,10 +12,8 @@ CTBinaryTreeNode >> ifEmpty: eBlock ifNotEmpty: neBlock [
 { #category : #actions }
 CTBinaryTreeNode >> mergeBinaryTreeElement: aBTElement inBinaryTree: aBinaryTree [
 
-	^ (RandomBernoulli new
-		   p: 0.5;
-		   next) = 0
-		  ifTrue: [ 
+	^ (Random seed: 13) fairCoin
+		  ifHead: [ 
 			  | link |
 			  link := previousLink
 				          mergeBinaryTreeElement: aBTElement
@@ -25,7 +23,7 @@ CTBinaryTreeNode >> mergeBinaryTreeElement: aBTElement inBinaryTree: aBinaryTree
 				  leftBinaryTreeElement: link
 				  value: value
 				  rightBinaryTreeElement: nextLink ]
-		  ifFalse: [ 
+		  ifTail: [ 
 			  | link |
 			  link := nextLink
 				          mergeBinaryTreeElement: aBTElement
