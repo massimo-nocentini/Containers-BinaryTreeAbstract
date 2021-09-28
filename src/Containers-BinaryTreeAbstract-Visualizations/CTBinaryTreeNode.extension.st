@@ -10,6 +10,12 @@ CTBinaryTreeNode >> asShape [
 ]
 
 { #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
+CTBinaryTreeNode >> depth [
+
+	^ (previousLink depth max: nextLink depth) + 1
+]
+
+{ #category : #'*Containers-BinaryTreeAbstract-Visualizations' }
 CTBinaryTreeNode >> shapes: shapes edges: associations [
 
 	super shapes: shapes edges: associations.

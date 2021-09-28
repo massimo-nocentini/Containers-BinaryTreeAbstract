@@ -15,6 +15,12 @@ CTBinaryTreeElement >> asShape [
 	self subclassResponsibility
 ]
 
+{ #category : #'as yet unclassified' }
+CTBinaryTreeElement >> depth [
+
+	self subclassResponsibility
+]
+
 { #category : #comparing }
 CTBinaryTreeElement >> hash [
 	^ self identityHash

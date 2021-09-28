@@ -53,6 +53,12 @@ CTBinaryTreeAbstract >> binaryTreeElementNode [
 	^ CTBinaryTreeNode new
 ]
 
+{ #category : #accessing }
+CTBinaryTreeAbstract >> depth [
+
+	^ representation depth
+]
+
 { #category : #testing }
 CTBinaryTreeAbstract >> is: anObject equalTo: anotherObject [
 	^ anObject = anotherObject
@@ -88,6 +94,11 @@ CTBinaryTreeAbstract >> push: anObject [
 	representation := leaf
 		                  mergeBinaryTreeElement: representation
 		                  inBinaryTree: self
+]
+
+{ #category : #accessing }
+CTBinaryTreeAbstract >> representation [
+	^ representation
 ]
 
 { #category : #accessing }
