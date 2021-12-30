@@ -17,5 +17,6 @@ BaselineOfContainersBinaryTreeAbstract >> baseline: spec [
 		"Packages"
 		spec
 			package: 'Containers-BinaryTreeAbstract';
+			package: 'Containers-BinaryTreeAbstract-Tests';
 			package: 'Containers-BinaryTreeAbstract-Visualizations' ]
 ]
