@@ -8,6 +8,6 @@ CTSlotDescriptorsVisitor >> visitCTBinaryTreeAbstract: aBinaryTree [
 		   ifNotEmpty: [ { #root asSlotDescriptor } ]) , { 
 		  #depth asSlotDescriptor.
 		  (#asShapeBinaryTree asSlotDescriptor
-			   inline: true;
+			   inline;
 			   quote) }
 ]
