@@ -75,6 +75,12 @@ CTBinaryTreeAbstract >> is: anObject lessThan: anotherObject [
 	^ anObject < anotherObject
 ]
 
+{ #category : #testing }
+CTBinaryTreeAbstract >> isEmpty [
+
+	^ representation isEmpty
+]
+
 { #category : #creating }
 CTBinaryTreeAbstract >> leftBinaryTreeElement: l value: v rightBinaryTreeElement: r [
 	^ self binaryTreeElementNode
