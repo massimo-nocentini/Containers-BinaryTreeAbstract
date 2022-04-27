@@ -4,17 +4,10 @@ Extension { #name : #CTSlotDescriptorsVisitor }
 CTSlotDescriptorsVisitor >> visitCTBinaryTreeAbstract: aBinaryTree [
 
 	^ (self visitObject: aBinaryTree) , { 
-		  (self newSlotDescriptorSelector
-			   selector: #root;
-			   enablePredicate: [ aBinaryTree isEmpty not ];
-			   yourself).
-
-		  (self newSlotDescriptorSelector
-			   selector: #depth;
-			   yourself).
-
-		  (self newSlotDescriptorSelector
-			   selector: #asShapeBinaryTree;
+		  ((self newSlotDescriptorSelector: #root) enablePredicate: [ 
+			   aBinaryTree isEmpty not ]).
+		  (self newSlotDescriptorSelector: #depth).
+		  ((self newSlotDescriptorSelector: #asShapeBinaryTree)
 			   inline;
 			   quote) }
 ]
