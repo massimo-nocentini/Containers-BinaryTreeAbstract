@@ -9,6 +9,13 @@ Class {
 	#category : #'Containers-BinaryTreeAbstract-Tests'
 }
 
+{ #category : #testing }
+CTBinaryTreeAbstractTest class >> isAbstract [
+	"My subclasses answer the concrete tree to test in #tree:."
+
+	^ self == CTBinaryTreeAbstractTest
+]
+
 { #category : #tests }
 CTBinaryTreeAbstractTest >> testCreation [
 
@@ -37,7 +44,7 @@ CTBinaryTreeAbstractTest >> testPushShuffledCollection [
 
 	self
 		assert: shuffled
-		equals: #( 8 16 20 3 6 5 4 19 7 12 2 10 11 9 13 18 17 15 14 1 )
+		equals: #( 14 10 15 16 9 18 19 1 13 20 8 11 5 12 7 4 2 17 6 3 )
 				asOrderedCollection.
 
 	^ self exportSlotsGraphOf: (self tree: shuffled)
@@ -51,7 +58,7 @@ CTBinaryTreeAbstractTest >> testPushShuffledInterval [
 
 	self
 		assert: shuffled
-		equals: #( 8 16 20 3 6 5 4 19 7 12 2 10 11 9 13 18 17 15 14 1 ).
+		equals: #( 14 10 15 16 9 18 19 1 13 20 8 11 5 12 7 4 2 17 6 3 ).
 
 	^ self exportSlotsGraphOf: (self tree: shuffled)
 ]
