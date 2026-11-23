@@ -3,8 +3,10 @@ I am a binary tree. I hold its elements in `representation`, which is a `CTBinar
 
 ```smalltalk
 | tree |
-tree := #( 3 1 2 ) asOrderedCollection asBinaryTree: CTBinaryTreeAbstract.
-{ tree root. tree pop. tree pop. tree pop. tree isEmpty } ""#(2 2 1 3 true)""
+tree := #( 3 1 2 ) asOrderedCollection
+	asBinaryTree: CTBinaryTreeAbstract.
+{ tree root. tree pop. tree pop. tree pop. tree isEmpty }
+	""#(2 2 1 3 true)""
 ```
 
 - `push:` merges a leaf with my representation.
