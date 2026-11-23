@@ -1,5 +1,5 @@
 "
-A CTBinaryTreeAbstractTest is a test class for testing the behavior of CTBinaryTreeAbstract
+A `CTBinaryTreeAbstractTest` is a test class for testing the behavior of `CTBinaryTreeAbstract`
 "
 Class {
 	#name : #CTBinaryTreeAbstractTest,
