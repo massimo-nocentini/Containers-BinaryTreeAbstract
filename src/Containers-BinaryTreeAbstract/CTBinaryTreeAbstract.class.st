@@ -1,3 +1,20 @@
+"
+I am a binary tree. I hold its elements in `representation`, which is a `CTBinaryTreeElement`, and leave to it the operations that depend on its shape.
+
+```smalltalk
+| tree |
+tree := #( 3 1 2 ) asOrderedCollection asBinaryTree: CTBinaryTreeAbstract.
+{ tree root. tree pop. tree pop. tree pop. tree isEmpty } ""#(2 2 1 3 true)""
+```
+
+- `push:` merges a leaf with my representation.
+- `root` answers the value of my root and `pop` removes it too, by merging its two subtrees. Both signal `CollectionIsEmpty` when I am empty.
+- `asBinaryTree:` builds an instance of the class it is given: it pushes the elements of a collection one after the other, while those of an `ArrayedCollection` become leaves that are merged by bisection.
+
+My subclasses say which elements they are made of in `binaryTreeElementEmpty` and `binaryTreeElementNode`. They can also override `is:lessThan:` and `is:equalTo:`, with which the elements compare their values; mine are `<` and `=`.
+
+`depth` and `asShapeBinaryTree`, which draws me with Roassal, need the package `Containers-BinaryTreeAbstract-Visualizations`.
+"
 Class {
 	#name : #CTBinaryTreeAbstract,
 	#superclass : #Object,

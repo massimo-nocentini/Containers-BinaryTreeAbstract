@@ -1,3 +1,13 @@
+"
+I am the baseline of `Containers-BinaryTreeAbstract`: I load the packages `Containers-BinaryTreeAbstract`, `Containers-BinaryTreeAbstract-Visualizations` and `Containers-BinaryTreeAbstract-Tests`, and the project `Containers-Links` that they require.
+
+```smalltalk
+Metacello new
+	baseline: 'ContainersBinaryTreeAbstract';
+	repository: 'github://massimo-nocentini/Containers-BinaryTreeAbstract:master/src';
+	load
+```
+"
 Class {
 	#name : #BaselineOfContainersBinaryTreeAbstract,
 	#superclass : #BaselineOf,
